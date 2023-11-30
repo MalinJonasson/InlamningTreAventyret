@@ -1,3 +1,8 @@
+using Newtonsoft.Json;
+using System.IO;
+using System.Linq.Expressions;
+using System.Xml.Linq;
+
 namespace InlämningTreÄventyret
 {
     public partial class Form1 : Form
@@ -10,20 +15,33 @@ namespace InlämningTreÄventyret
 
         private void EndButton1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+           DialogResult endGame = MessageBox.Show("Are you sure you want to leave?" +
+               " All your changes will be saved", "Exit", MessageBoxButtons.YesNo);
+            if (endGame == DialogResult.No)
+            {
+                Show();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
         private void StartGameButton_Click(object sender, EventArgs e)
         {
-            Hide();
-            bool click = true;
-            if (click)
-            {
+
+            if (!string.IsNullOrEmpty(PlayersNameTextBox.Text))
+            { 
+                Hide();
                 form2 = new Form2();
                 form2.Form1 = this;
                 form2.Show();
+                form2.SendString(PlayersNameTextBox.Text + " is playing");
             }
-            form2.SendString(PlayersNameTextBox.Text);
+            else
+            {
+                MessageBox.Show("You have to enter a name");
+            }
         }
     }
 }

@@ -14,11 +14,20 @@
         }
         private void endButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult endGame = MessageBox.Show("Are you sure you want to leave?" +
+               " All your changes won't be saved", "Exit", MessageBoxButtons.YesNo);
+            if (endGame == DialogResult.No)
+            {
+                Show();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
         private void playAgainButton_Click(object sender, EventArgs e)
-        {  //Bugg form3 ligger kvar.
+        {  
             Form3.Close();
             Form1 = new Form1();
             Form1.Show();

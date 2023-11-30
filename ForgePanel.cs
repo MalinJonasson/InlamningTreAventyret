@@ -6,11 +6,10 @@ namespace InlämningTreÄventyret
     {
         public Form2 Form2;
         public List<Item> ForgeItems = new();
-
+        string path = "forgepanellist.json";
         public ForgePanel()
         {
             InitializeComponent();
-            //Form2.SetForgePanel(this);
 
             FileInfo file = new FileInfo(path);
             if (!file.Exists)
@@ -30,8 +29,6 @@ namespace InlämningTreÄventyret
             }
             UpdateListBox();
         }
-
-        string path = "forgepanellist.json";
         public void SetForm2(Form2 form2)
         {
             Form2 = form2;

@@ -10,6 +10,7 @@ namespace InlämningTreÄventyret
         public ForgePanel ForgePanel1;
         public FoodCellerPanel FoodCellerPanel1;
         public List<Item> BackpackItems = new List<Item>();
+        string path = "collecteditemslist.json";
 
         public Form2()
         {
@@ -17,28 +18,14 @@ namespace InlämningTreÄventyret
             stablePanel1.SetForm2(this);
             forgePanel1.SetForm2(this);
             foodCellerPanel1.SetForm2(this);
+
             new FileInfo(path);
             LoadAll();
         }
         public void SendString(string message)
         {
-            PlayersNameLable.Text = message + " is playing.";
+            PlayersNameLable.Text = message;
         }
-        public void SetStablePanel(StablePanel stablePanel)
-        {
-            StablePanel1 = stablePanel;
-        }
-        public void SetForgePanel(ForgePanel forgePanel)
-        {
-            ForgePanel1 = forgePanel;
-        }
-        public void SetFoodCellerPanel(FoodCellerPanel foodCellerPanel)
-        {
-            FoodCellerPanel1 = foodCellerPanel;
-        }
-
-        string path = "collecteditemslist.json";
-        
         public void AddItemToCollectedListBox(string itemName)
         {
             listBoxOfCollectedItems.Items.Add(itemName);
@@ -127,16 +114,12 @@ namespace InlämningTreÄventyret
                             break;
 
                         default:
-                            MessageBox.Show("Invalid category");
+                            MessageBox.Show("Invalid choice");
                             break;
                     }
 
                     BackpackItems.Remove(selectedItemObject);
                     SaveItems();
-                }
-                else
-                {
-                    MessageBox.Show($"Item not found. BackpackItems: {string.Join(", ", BackpackItems.Select(item => item.Name))}");
                 }
             }
             else

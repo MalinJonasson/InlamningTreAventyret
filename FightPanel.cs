@@ -19,7 +19,8 @@ namespace InlämningTreÄventyret
 
         private void EndButton2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+                Application.Exit();
+            
         }
     }
 }

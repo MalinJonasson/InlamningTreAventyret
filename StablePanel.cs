@@ -6,11 +6,10 @@ namespace InlämningTreÄventyret
     {
         public Form2 Form2;
         public List<Item> StableItems = new();
+        string path = "stablepanellist.json";
         public StablePanel()
         {
-
             InitializeComponent();
-            //Form2.SetStablePanel(this);
 
             FileInfo file = new FileInfo(path);
             if (!file.Exists)
@@ -29,9 +28,7 @@ namespace InlämningTreÄventyret
                 LoadAll();
             }
             UpdateListBox();
-
         }
-        string path = "stablepanellist.json";
 
         public void SetForm2(Form2 form2)
         {

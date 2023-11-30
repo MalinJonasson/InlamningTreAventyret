@@ -7,10 +7,10 @@ namespace InlämningTreÄventyret
     {
         public Form2 Form2;
         public List<Item> FoodCellerItems = new();
+        string path = "foodcellerpanellist.json";
         public FoodCellerPanel()
         {
             InitializeComponent();
-           // Form2.SetFoodCellerPanel(this);
 
             FileInfo file = new FileInfo(path);
             if (!file.Exists)
@@ -22,15 +22,14 @@ namespace InlämningTreÄventyret
                foreach (Item item in FoodCellerItems)
                {
                  foodCellerItemsListBox.Items.Add(item.Name);
-               }            }
+               }           
+            }
             else
             {
                 LoadAll();
             }
             UpdateListBox();
         }
-
-        string path = "foodcellerpanellist.json";
         public void SetForm2(Form2 form2)
         {
             Form2 = form2;
@@ -78,7 +77,7 @@ namespace InlämningTreÄventyret
             {
                 Item stableItem = FoodCellerItems.FirstOrDefault(x => x.Name == name);
 
-                Form2.BackpackItems.Add(stableItem);  // Add to the BackpackItems list
+                Form2.BackpackItems.Add(stableItem);
                 FindItemToRemove();
                 Form2.AddItemToCollectedListBox(name);
             }
