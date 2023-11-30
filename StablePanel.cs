@@ -36,6 +36,7 @@ namespace InlämningTreÄventyret
         public void SetForm2(Form2 form2)
         {
             Form2 = form2;
+            Form2.StablePanel1 = this;
         }
         private void goBackStableButton_Click(object sender, EventArgs e)
         {
@@ -82,7 +83,6 @@ namespace InlämningTreÄventyret
 
                 Form2.BackpackItems.Add(stableItem);  // Add to the BackpackItems list
                 FindItemToRemove();
-                Form2.StablePanel1 = this;
                 Form2.AddItemToCollectedListBox(name);
             }
             else
